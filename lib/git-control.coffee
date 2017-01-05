@@ -69,3 +69,8 @@ module.exports = GitControl =
       description: 'Disable Fast Forward for default at Git Merge'
       type: 'boolean'
       default: false
+    gitCustomPath:
+      title: 'Git path'
+      description: 'Git executable location for custom installation'
+      type: 'string'
+      default: ''
