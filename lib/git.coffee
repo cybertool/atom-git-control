@@ -43,6 +43,9 @@ parseDiff = (data) -> q.fcall ->
   diffs = []
   diff = {}
   for line in data.split('\n') when line.length
+    if /^warning: LF will be replaced by CRLF in /.test(line) or /^The file will have its original line endings in your working directory/.test(line)
+      continue
+
     switch
       when /^diff --git /.test(line)
         diff =
