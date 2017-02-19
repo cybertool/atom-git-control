@@ -87,6 +87,11 @@
     border-radius: 4px;
     color: @text-color;
     margin-right: 10px;
+    &:disabled {
+      opacity: .5;
+      pointer-events: none;
+      cursor: default;
+    }
     &:hover {
       color: @text-color-highlight;
     }

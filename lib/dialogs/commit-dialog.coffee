@@ -9,9 +9,9 @@ class CommitDialog extends Dialog
         @strong 'Commit'
       @div class: 'body', =>
         @label 'Commit Message'
-        @textarea class: 'native-key-bindings', outlet: 'msg', keyUp: 'colorLength'
+        @textarea class: 'native-key-bindings', outlet: 'msg', keyUp: 'msgKeyUp'
       @div class: 'buttons', =>
-        @button class: 'active', click: 'commit', =>
+        @button class: 'active', outlet: 'commitButton', click: 'commit', =>
           @i class: 'icon commit'
           @span 'Commit'
         @button click: 'cancel', =>
@@ -20,6 +20,7 @@ class CommitDialog extends Dialog
 
   activate: ->
     @msg.val('')
+    @checkForEmptyMessage()
     return super()
 
   colorLength: ->
@@ -34,6 +35,19 @@ class CommitDialog extends Dialog
     else
       @msg.removeClass('over-fifty')
     return
+
+  checkForEmptyMessage: ->
+    if atom.config.get("git-control.allowEmptyMessage")
+      return
+
+    if !@msg.val() or @msg.val().replace(/^\s+/g, '').length == 0
+      @commitButton.prop('disabled', true)
+    else
+      @commitButton.prop('disabled', false)
+
+  msgKeyUp: ->
+    @colorLength()
+    @checkForEmptyMessage()
 
   commit: ->
     @deactivate()

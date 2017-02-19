@@ -69,3 +69,8 @@ module.exports = GitControl =
       description: 'Disable Fast Forward for default at Git Merge'
       type: 'boolean'
       default: false
+    allowEmptyMessage:
+      title: 'Allow Empty Message'
+      description: 'Allows you to create a commit with an empty commit message'
+      type: 'boolean'
+      default: true
