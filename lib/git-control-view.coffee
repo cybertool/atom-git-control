@@ -157,8 +157,7 @@ class GitControlView extends View
 
   commitMenuClick: ->
     return unless @filesView.hasSelected() or git.isMerging()
-
-    @commitDialog.activate()
+    git.lastCommitMessages().then (lastCommitMessages) =>  @commitDialog.activate(lastCommitMessages)
     return
 
   commit: ->

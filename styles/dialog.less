@@ -14,9 +14,6 @@
   display: none;
   z-index: 10;
 
-
-
-
   &.active {
     display: block;
   }
@@ -59,7 +56,7 @@
   input[readonly], textarea[readonly], select[readonly] {
     color: @text-color-subtle;
   }
-  
+
   textarea {
     height: 150px;
     resize: none;
@@ -73,6 +70,10 @@
     &:hover {
       color: @text-color-error;
     }
+  }
+
+  select:disabled {
+    opacity: .5;
   }
 
   button {

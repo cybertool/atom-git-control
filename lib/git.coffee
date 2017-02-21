@@ -90,6 +90,9 @@ parseStatus = (data) -> q.fcall ->
 
   return files
 
+parseLine = (data) -> q.fcall ->
+  return data.split('\n')
+
 parseDefault = (data) -> q.fcall ->
   return true
 
@@ -260,3 +263,6 @@ module.exports =
     return callGit "tag -a #{name} -m '#{msg}' #{href}", (data) ->
       atomRefresh()
       return parseDefault(data)
+
+  lastCommitMessages: (count = 10) ->
+    return callGit "log --pretty=format:\"%s\" --no-merges -#{count}", parseLine, true

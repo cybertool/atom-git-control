@@ -9,7 +9,8 @@ class CommitDialog extends Dialog
         @strong 'Commit'
       @div class: 'body', =>
         @label 'Commit Message'
-        @textarea class: 'native-key-bindings', outlet: 'msg', keyUp: 'msgKeyUp'
+        @textarea class: 'native-key-bindings', outlet: 'msg', keyUp: 'commitMessageUpdate'
+        @select class: 'native-key-bindings', outlet: 'messageSelection', change: 'messageSelectionUpdate'
       @div class: 'buttons', =>
         @button class: 'active', outlet: 'commitButton', click: 'commit', =>
           @i class: 'icon commit'
@@ -18,10 +19,27 @@ class CommitDialog extends Dialog
           @i class: 'icon x'
           @span 'Cancel'
 
-  activate: ->
+  activate: (lastCommitMessages) ->
     @msg.val('')
     @checkForEmptyMessage()
+    @initMessageSelection(lastCommitMessages)
     return super()
+
+  initMessageSelection: (lastCommitMessages) ->
+    @messageSelection.html('')
+    @messageSelection.append('<option disabled selected hidden>&lt;Choose a previously entered commit message&gt;</option>')
+
+    if (lastCommitMessages?)
+      @messageSelection.prop('disabled', false)
+    else
+      @messageSelection.prop('disabled', true)
+      return
+
+    for currentMessage in lastCommitMessages when currentMessage.length
+      option = document.createElement("option")
+      option.text = currentMessage
+      @messageSelection.append(option)
+    return
 
   colorLength: ->
     too_long = false
@@ -44,10 +62,17 @@ class CommitDialog extends Dialog
       @commitButton.prop('disabled', true)
     else
       @commitButton.prop('disabled', false)
+    return
 
-  msgKeyUp: ->
+  commitMessageUpdate: ->
     @colorLength()
     @checkForEmptyMessage()
+    return
+
+  messageSelectionUpdate: ->
+    @msg.val(@messageSelection.find('option:selected').text())
+    @commitMessageUpdate()
+    return
 
   commit: ->
     @deactivate()
