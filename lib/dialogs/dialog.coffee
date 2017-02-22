@@ -4,6 +4,7 @@ module.exports =
 class Dialog extends View
   activate: ->
     @addClass('active')
+    @find('[autofocus]:first').focus()
     return
 
   deactivate: ->

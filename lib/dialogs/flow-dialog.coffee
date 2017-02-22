@@ -11,7 +11,7 @@ class FlowDialog extends Dialog
         @strong 'Workflow - GitFlow'
       @div class: 'body', =>
         @label 'Git Flow '
-        @select class: 'native-key-bindings', outlet: 'flowType', change: 'flowTypeChange'
+        @select class: 'native-key-bindings', outlet: 'flowType', autofocus: 'autofocus', change: 'flowTypeChange'
         @select class: 'native-key-bindings', outlet: 'flowAction', change: 'flowActionChange'
         @label 'Branch Name:', outlet: 'labelBranchName'
         @input class: 'native-key-bindings', type: 'text', outlet: 'branchName'

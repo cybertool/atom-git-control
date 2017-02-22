@@ -12,7 +12,7 @@ class ProjectDialog extends Dialog
         @strong 'Project'
       @div class: 'body', =>
         @label 'Current Project'
-        @select outlet: 'projectList'
+        @select autofocus: 'autofocus', outlet: 'projectList'
       @div class: 'buttons', =>
         @button class: 'active', click: 'changeProject', =>
           @i class: 'icon icon-repo-pull'

@@ -13,7 +13,7 @@ class MergeDialog extends Dialog
         @label 'Current Branch'
         @input class: 'native-key-bindings', type: 'text', readonly: true, outlet: 'toBranch'
         @label 'Merge From Branch'
-        @select class: 'native-key-bindings', outlet: 'fromBranch'
+        @select class: 'native-key-bindings', autofocus: 'autofocus', outlet: 'fromBranch'
         @div =>
           @input type: 'checkbox',class: 'checkbox',outlet: 'noff'
           @label 'No Fast-Forward'

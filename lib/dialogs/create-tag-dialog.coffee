@@ -9,7 +9,7 @@ class CreateTagDialog extends Dialog
         @strong 'Tag'
       @div class: 'body', =>
         @label 'Tag name'
-        @input class: 'native-key-bindings', type: 'text', outlet: 'name'
+        @input class: 'native-key-bindings', type: 'text', autofocus: 'autofocus', outlet: 'name'
         @label 'commit ref'
         @input class: 'native-key-bindings', type: 'text', outlet: 'href'
         @label 'Tag Message'

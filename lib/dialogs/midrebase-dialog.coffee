@@ -11,7 +11,7 @@ class MidrebaseDialog extends Dialog
         @strong 'It appears that you are in the middle of a rebase, would you like to:'
       @div class: 'body', =>
         @label 'Continue the rebase'
-        @input type: 'checkbox',class: 'checkbox',outlet: 'contin'
+        @input type: 'checkbox',class: 'checkbox',autofocus: 'autofocus',outlet: 'contin'
         @div =>
           @label 'Abort the rebase'
           @input type: 'checkbox',class: 'checkbox',outlet: 'abort'

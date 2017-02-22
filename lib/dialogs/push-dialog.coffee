@@ -16,7 +16,7 @@ class PushDialog extends Dialog
         @label 'Push from branch'
         @input class: 'native-key-bindings',readonly: true,outlet: 'fromBranch'
         @label 'To branch'
-        @select class: 'native-key-bindings',outlet: 'toBranch'
+        @select class: 'native-key-bindings',autofocus: 'autofocus',outlet: 'toBranch'
         @div =>
           @label 'Force Push'
           @input type: 'checkbox',class: 'checkbox',outlet: 'force'
