@@ -15,7 +15,14 @@ fmtNum = (num) ->
 module.exports =
 class DiffView extends View
   @content: ->
-    @div class: 'diff'
+    @div class: 'diff', tabindex: 1
+
+  initialize: ->
+    @unbind('keydown')
+    @bind('keydown', (e) ->
+      if ((e.metaKey || e.ctrlKey) && (String.fromCharCode(e.which).toLowerCase() == 'c'))
+        atom.commands.dispatch(@, 'git-control:copy'))
+    return
 
   clearAll: ->
     @find('>.line').remove()

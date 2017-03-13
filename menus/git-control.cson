@@ -5,6 +5,12 @@
       'label': 'Toggle git-control'
       'command': 'git-control:toggle'
     }
+  ],
+  '.diff': [
+    {
+      'label': 'Copy'
+      'command': 'git-control:copy'
+    }
   ]
 'menu': [
   {

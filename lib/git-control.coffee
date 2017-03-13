@@ -16,6 +16,10 @@ module.exports = GitControl =
     console.log 'GitControl: activate'
 
     atom.commands.add 'atom-workspace', CMD_TOGGLE, => @toggleView()
+    atom.commands.add '.diff', 'git-control:copy': (event) ->
+      if (window.getSelection)
+        atom.clipboard.write(window.getSelection().toString())
+
     atom.workspace.onDidChangeActivePaneItem (item) => @updateViews()
     atom.project.onDidChangePaths => @updatePaths()
     return
