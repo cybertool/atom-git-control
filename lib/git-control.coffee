@@ -39,7 +39,7 @@ module.exports = GitControl =
       item = pane.addItem view, {index: 0}
 
       pane.activateItem item
-
+      view.compareMenuClick()
     else
       pane.destroyItem item
 
