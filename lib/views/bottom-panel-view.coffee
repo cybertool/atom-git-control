@@ -2,7 +2,7 @@
 git = require '../git'
 
 module.exports =
-class TestView extends View
+class BottomPanelView extends View
     @content: ->
         @div =>
             @div class: 'block panel', =>
