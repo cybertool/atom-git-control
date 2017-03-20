@@ -13,3 +13,7 @@ class LogView extends View
     @append new LogLine(iserror: iserror, log: log)
     @scrollToBottom()
     return
+
+  clearAll: ->
+    @empty()
+    return

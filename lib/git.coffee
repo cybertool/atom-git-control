@@ -266,3 +266,6 @@ module.exports =
 
   lastCommitMessages: (count = 10) ->
     return callGit "log --pretty=format:\"%s\" --no-merges -#{count}", parseLine, true
+
+  version: ->
+    return callGit "version", parseLine, true

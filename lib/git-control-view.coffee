@@ -8,6 +8,7 @@ BranchView = require './views/branch-view'
 DiffView = require './views/diff-view'
 FileView = require './views/file-view'
 LogView = require './views/log-view'
+BottomPanelView = require './views/bottom-panel-view'
 MenuView = require './views/menu-view'
 
 ProjectDialog = require './dialogs/project-dialog'
@@ -55,6 +56,7 @@ class GitControlView extends View
           @subview 'pushtagDialog', new PushTagsDialog()
           @subview 'rebaseDialog', new RebaseDialog()
           @subview 'midrebaseDialog', new MidrebaseDialog()
+        @subview 'bottomPanelView', new BottomPanelView()
         @subview 'logView', new LogView()
     else #This is so that no error messages can be created by pushing buttons that are unavailable.
       @div class: 'git-control', =>
@@ -105,6 +107,10 @@ class GitControlView extends View
     git.log(@selectedBranch).then (logs) ->
       console.log 'git.log', logs
       return
+    return
+
+  clearLog: ->
+    @logView.clearAll()
     return
 
   checkoutBranch: (branch, remote) ->
