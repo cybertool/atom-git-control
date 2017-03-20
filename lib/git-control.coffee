@@ -78,3 +78,8 @@ module.exports = GitControl =
       description: 'Allows you to create a commit with an empty commit message'
       type: 'boolean'
       default: true
+    gitCustomPath:
+      title: 'Git path'
+      description: 'Git executable location for custom installation'
+      type: 'string'
+      default: ''

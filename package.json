@@ -22,7 +22,7 @@
     "atom": ">0.50.0"
   },
   "dependencies": {
-    "git-promise": "^0.2.0",
+    "git-promise": "^0.3.1",
     "q": "^1.0.1",
     "atom-space-pen-views": "^2.0.3"
   },
@@ -126,7 +126,7 @@
       },
       {
         "name": "git-promise",
-        "version": "0.2.0",
+        "version": "0.3.1",
         "path": "node_modules/git-promise/index.js"
       },
       {
@@ -771,7 +771,7 @@
           "spec"
         ],
         "dependencies": {
-          "git-promise": "^0.2.0",
+          "git-promise": "^0.3.1",
           "q": "^1.0.1",
           "atom-space-pen-views": "^2.0.3"
         }

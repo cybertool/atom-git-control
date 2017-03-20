@@ -99,7 +99,12 @@ parseDefault = (data) -> q.fcall ->
 callGit = (cmd, parser, nodatalog) ->
   logcb "> git #{cmd}"
 
-  return git(cmd, {cwd: cwd})
+  options = {cwd: cwd}
+  customPath = atom.config.get("git-control.gitCustomPath")
+  if customPath
+    options.gitExec = customPath
+
+  return git(cmd, options)
     .then (data) ->
       logcb data unless nodatalog
       return parser(data)
